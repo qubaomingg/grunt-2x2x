@@ -15,9 +15,11 @@
         
         function new2x () {
             that = this;
-            var instance2x = new _2x2x();
-            instance2x.init();    
            
+            var instance2x = new _2x2x();
+
+            instance2x.init();    
+            
         }
         function _2x2x() {
            // this.done = this.async();
@@ -39,8 +41,14 @@
             // ergodic the img in imgsrcdir
             recurse: function() {
                 var _2x2x = this;
+
+                var guard_file = 0;
+                var guard_2x = 0;
                 grunt.file.recurse(this.imgsrcdir, function(file) {
-                    
+                    guard_file += 1;
+
+                   
+
                     var srcextname = path.extname(file), 
                         srcdirname = path.dirname(file);
                     if (!grunt.file.isDir(_2x2x.imgdesdir)) {
@@ -49,12 +57,18 @@
                     var has2x = (function() {
                         return file.indexOf('@2x') > -1;
                     })();
-                    if(!has2x) return false;
+
+                    if(!has2x) {
+
+                      return false;  
+                    } 
+                    guard_2x += 1;
                     _2x2x.series.push(function(callback) {
                         gm(file).size(function(err, features) {
                           
                             // find the @2x image and get it's normal name
                             var outfile = replace2x(file);
+                            
                             var dstPath = _2x2x.imgdesdir + "/" +  outfile;
                             var final_width = features.width;
                             var final_height = features.height;
@@ -68,16 +82,30 @@
                             if(!_2x2x.overwrite) {
                                 // not overwrite
                                 if(grunt.file.exists(dstPath)) {
+                                    grunt.log.error((dstPath + "is existed already!"));
                                     return false;    
+
                                 }
                                 
                             }
-                            gm(file).thumb(final_width / 2, final_height / 2, dstPath, _2x2x.quality, function() {
-                               grunt.log.writelns((dstPath + " has been created !").green);
-                            });
+                             gm(file).autoOrient().
+                                resize(final_width / 2, final_height / 2, "!").
+                                write(dstPath, function(err) {
+                                  grunt.log.writelns((dstPath + " has been created !").green);
+                                });
+                            // gm(file).thumb(final_width / 2, final_height / 2, dstPath, _2x2x.quality, function() {
+                            //    grunt.log.writelns((dstPath + " has been created !").green);
+                            // });
                         });
                     }(file));    
                 });
+                if((guard_file != 0) && (guard_2x == 0)) {
+                    grunt.log.error('no @2x image in the srcdir! ').red;
+                }
+                if(guard_file == 0) {
+                    grunt.log.error('no image in the srcdir! ');
+                }
+
                 async.series(_2x2x.series, that.async());          
             }
         };

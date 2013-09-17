@@ -1,6 +1,6 @@
 # grunt-2x2x
 
-> a grunt plugin to resize and rename **@2x.png(jpg,gif,) image to **.png(jpg,gif)
+> short for @2x 2(to) @x. a grunt plugin to duplicate image and then resize&rename @2x.png to .png
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
@@ -29,7 +29,6 @@ In your project's Gruntfile, add a section named `_2x2x` to the data object pass
                 imgsrcdir: "src",
                 imgdesdir: "dest",
                 option: {
-                  'quality': 50,  
                   'overwrite' : true 
                 }
             }
@@ -74,7 +73,6 @@ In this example, custom options are used to do something else with whatever else
           imgsrcdir: "img",
           imgdesdir: "img/slice",
           option: {
-             'quality': 30,  
              'overwrite' : false
           }
         }

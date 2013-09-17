@@ -1,6 +1,6 @@
 /*
  * grunt-2x2x
- * https://github.com/alanqu/2x2x
+ * https://github.com/alanqu/grunt-2x2x
  *
  * Copyright (c) 2013 freestyle21
  * Licensed under the MIT license.

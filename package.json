@@ -1,8 +1,8 @@
 {
   "name": "grunt-2x2x",
-  "description": "a grunt plugin to resize and rename **@2x.png(jpg,gif,) image to **.png(jpg,gif)",
-  "version": "0.1.1",
-  "homepage": "https://github.com/freestyle21/2x2x",
+  "description": "short for @2x 2(to) @x. a grunt plugin to duplicate image and then resize&rename @2x.png to .png",
+  "version": "0.1.2",
+  "homepage": "https://github.com/freestyle21/grunt-2x2x",
   "author": {
     "name": "freestyle21",
     "email": "675861708@qq.com",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/freestyle21/2x2x.git"
+    "url": "git://github.com/freestyle21/grunt-2x2x.git"
   },
   "bugs": {
-    "url": "https://github.com/freestyle21/2x2x/issues"
+    "url": "https://github.com/freestyle21/grunt-2x2x/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/freestyle21/2x2x/blob/master/LICENSE-MIT"
+      "url": "https://github.com/freestyle21/grunt-2x2x/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
